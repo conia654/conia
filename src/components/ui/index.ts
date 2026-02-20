@@ -1,5 +1,6 @@
 export { BackgroundShapes } from "./BackgroundShapes";
-export { SmoothScroll } from "./SmoothScroll";
+export { LenisProvider, useLenisRef } from "./SmoothScroll";
+export type { LenisRef } from "./SmoothScroll";
 export { Button } from "./Button";
 export type { ButtonProps, ButtonVariant } from "./Button";
 export { Card, CardBody, CardFooter, CardHeader } from "./Card";
