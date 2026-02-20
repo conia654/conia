@@ -13,8 +13,8 @@ export interface ServicePageHeroBadge {
 export interface ServicePageHeroProps {
   /** Main headline (can be string or use fragment for line breaks) */
   title: React.ReactNode;
-  /** Primary CTA */
-  primaryCta?: { label: string; href: string };
+  /** Primary CTA (scrollToId: smooth-scroll to section when on same page) */
+  primaryCta?: { label: string; href: string; scrollToId?: string };
   /** Secondary CTA (e.g. Cotizar with icon) */
   secondaryCta?: { label: string; href: string; icon?: React.ReactNode };
   /** Hero image (e.g. product photo) */
@@ -24,7 +24,7 @@ export interface ServicePageHeroProps {
   className?: string;
 }
 
-const defaultPrimaryCta = { label: "Contáctanos", href: "/contacto" };
+const defaultPrimaryCta = { label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" };
 const defaultSecondaryCta = {
   label: "Cotizar",
   href: "/cotizar",
@@ -50,7 +50,7 @@ export function ServicePageHero({
             {title}
           </h1>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={primaryCta.href}>
+            <Button variant="primary" href={primaryCta.href} scrollToId={primaryCta.scrollToId}>
               {primaryCta.label}
             </Button>
             <Button

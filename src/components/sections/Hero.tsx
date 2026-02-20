@@ -11,8 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 export interface HeroProps {
   /** Main headline */
   title?: string;
-  /** Primary CTA button */
-  primaryCta?: { label: string; href: string };
+  /** Primary CTA button (scrollToId: smooth-scroll to section when on same page) */
+  primaryCta?: { label: string; href: string; scrollToId?: string };
   /** Secondary CTA button (optional icon shown by default for "Cotizar") */
   secondaryCta?: { label: string; href: string; icon?: React.ReactNode };
   /** Optional extra class for the section */
@@ -24,7 +24,7 @@ const defaultTitle =
 
 export function Hero({
   title = defaultTitle,
-  primaryCta = { label: "Contáctanos", href: "/contacto" },
+  primaryCta = { label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" },
   secondaryCta = {
     label: "Cotizar",
     href: "/cotizar",
@@ -97,7 +97,7 @@ export function Hero({
         ))}
       </div>
       <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <Button variant="primary" href={primaryCta.href}>
+        <Button variant="primary" href={primaryCta.href} scrollToId={primaryCta.scrollToId}>
           {primaryCta.label}
         </Button>
         <Button

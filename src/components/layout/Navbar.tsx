@@ -13,7 +13,7 @@ export interface NavLink {
 export interface NavbarProps {
   logo?: React.ReactNode;
   links?: NavLink[];
-  cta?: { label: string; href: string };
+  cta?: { label: string; href: string; scrollToId?: string };
 }
 
 const defaultLinks: NavLink[] = [
@@ -59,9 +59,15 @@ export function Navbar({ logo, links = defaultLinks, cta }: NavbarProps) {
               </Link>
             ))}
             {cta && (
-              <Link href={cta.href}>
-                <Button variant="primary">{cta.label}</Button>
-              </Link>
+              cta.scrollToId ? (
+                <Button href={cta.href} scrollToId={cta.scrollToId} variant="primary">
+                  {cta.label}
+                </Button>
+              ) : (
+                <Link href={cta.href}>
+                  <Button variant="primary">{cta.label}</Button>
+                </Link>
+              )
             )}
           </div>
 
@@ -163,11 +169,23 @@ export function Navbar({ logo, links = defaultLinks, cta }: NavbarProps) {
           ))}
           {cta && (
             <li className="mt-4 border-t border-outline/30 pt-4">
-              <Link href={cta.href} onClick={close} className="block">
-                <Button variant="primary" className="w-full">
+              {cta.scrollToId ? (
+                <Button
+                  href={cta.href}
+                  scrollToId={cta.scrollToId}
+                  variant="primary"
+                  className="w-full"
+                  onClick={close}
+                >
                   {cta.label}
                 </Button>
-              </Link>
+              ) : (
+                <Link href={cta.href} onClick={close} className="block">
+                  <Button variant="primary" className="w-full">
+                    {cta.label}
+                  </Button>
+                </Link>
+              )}
             </li>
           )}
         </ul>

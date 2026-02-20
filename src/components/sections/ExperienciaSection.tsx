@@ -60,17 +60,17 @@ export function ExperienciaSection({
             <p className="mt-5 leading-relaxed text-foreground/80">
               {description}
             </p>
-            <ul className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               {stats.map((stat) => (
-                <li
+                <div
                   key={stat.label}
                   className="flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-base font-semibold text-primary"
                 >
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <span className="rounded-full bg-primary" />
                   {stat.label}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           <div className="relative">

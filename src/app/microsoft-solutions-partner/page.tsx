@@ -3,7 +3,10 @@ import {
   MicrosoftPartnersHero,
   MicrosoftPlansSection,
   MicrosoftCopilotSection,
+  ContactoSection,
 } from "@/components/sections";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { YoutubeEmbed } from "@/components/ui/YoutubeEmbed";
 import type { MicrosoftPlanItem } from "@/components/sections";
 
 export const metadata = {
@@ -122,6 +125,7 @@ const enterprisePlans: MicrosoftPlanItem[] = [
 export default function MicrosoftSolutionsPartnerPage() {
   return (
     <>
+      <ScrollToTop />
       <MicrosoftPartnersHero
         title={
           <>
@@ -134,7 +138,7 @@ export default function MicrosoftSolutionsPartnerPage() {
           alt: "Equipo Conia, soluciones Microsoft",
         }}
         calloutText="¡Facturamos todos los servicios!"
-        primaryCta={{ label: "Contáctanos", href: "/contacto" }}
+        primaryCta={{ label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" }}
         secondaryCta={{
           label: "Cotizar",
           href: "/cotizar",
@@ -143,15 +147,24 @@ export default function MicrosoftSolutionsPartnerPage() {
           ),
         }}
       />
+      <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <YoutubeEmbed
+          videoId="AL2V-wCaYps"
+          title="Conia - Microsoft Solutions Partner"
+        />
+      </section>
       <MicrosoftPlansSection
+        id="pyme"
         sectionTitle="Microsoft 365 Empresa (PYME)"
         plans={pymePlans}
       />
       <MicrosoftPlansSection
+        id="empresarial"
         sectionTitle="EMPRESARIAL"
         plans={enterprisePlans}
       />
       <MicrosoftCopilotSection />
+      <ContactoSection />
     </>
   );
 }

@@ -8,6 +8,7 @@ import {
   ServiceConfigureCta,
   ContactoSection,
 } from "@/components/sections";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 
 export const metadata = {
   title: "Renta de impresoras | Conia",
@@ -116,6 +117,7 @@ const printerCards = [
 export default function RentaImpresorasPage() {
   return (
     <>
+      <ScrollToTop />
       <ServicePageHero
         title={
           <>
@@ -124,7 +126,7 @@ export default function RentaImpresorasPage() {
             pesos al mes
           </>
         }
-        primaryCta={{ label: "Contáctanos", href: "/contacto" }}
+        primaryCta={{ label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" }}
         secondaryCta={{
           label: "Cotizar",
           href: "/cotizar",

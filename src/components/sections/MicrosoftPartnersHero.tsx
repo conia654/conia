@@ -9,6 +9,8 @@ export interface MicrosoftSolutionCard {
   description: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /** When set, CTA smooth-scrolls to this id (e.g. "pyme", "empresarial") */
+  scrollToId?: string;
 }
 
 export interface MicrosoftPartnersHeroProps {
@@ -18,7 +20,7 @@ export interface MicrosoftPartnersHeroProps {
   image: { src: string; alt: string };
   /** Speech bubble / callout text */
   calloutText?: string;
-  primaryCta?: { label: string; href: string };
+  primaryCta?: { label: string; href: string; scrollToId?: string };
   secondaryCta?: { label: string; href: string; icon?: React.ReactNode };
   /** Two cards below hero: PYME and Empresarial (optional override) */
   solutionCards?: MicrosoftSolutionCard[];
@@ -30,7 +32,7 @@ const defaultTitle = (
     Partners <span className="text-primary">oficiales</span> de Microsoft
   </>
 );
-const defaultPrimaryCta = { label: "Contáctanos", href: "/contacto" };
+const defaultPrimaryCta = { label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" };
 const defaultSecondaryCta = {
   label: "Cotizar",
   href: "/cotizar",
@@ -44,14 +46,16 @@ const defaultSolutionCards: MicrosoftSolutionCard[] = [
     description:
       "Impulsa tu negocio con soluciones de Microsoft diseñadas para pequeñas y medianas empresas. Aumenta la productividad, mejora la colaboración y protege tus datos con herramientas que te permiten centrarte en crecer.",
     ctaLabel: "Ver más",
-    ctaHref: "#",
+    ctaHref: "#pyme",
+    scrollToId: "pyme",
   },
   {
     title: "Empresarial",
     description:
       "Optimiza tus procesos y alcanza tus metas con soluciones de Microsoft para grandes empresas. Ofrecemos seguridad robusta, escalabilidad y las herramientas que necesitas para tomar decisiones informadas.",
     ctaLabel: "Ver más",
-    ctaHref: "#",
+    ctaHref: "#empresarial",
+    scrollToId: "empresarial",
   },
 ];
 
@@ -85,7 +89,7 @@ export function MicrosoftPartnersHero({
             />
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={primaryCta.href}>
+            <Button variant="primary" href={primaryCta.href} scrollToId={primaryCta.scrollToId}>
               {primaryCta.label}
             </Button>
             <Button
@@ -138,6 +142,7 @@ export function MicrosoftPartnersHero({
                 <Button
                   variant="secondary"
                   href={card.ctaHref ?? "#"}
+                  scrollToId={card.scrollToId}
                   className="rounded-full"
                 >
                   {card.ctaLabel ?? "Ver más"}

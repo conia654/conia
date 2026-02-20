@@ -23,9 +23,19 @@ export interface MicrosoftPlanItem {
 export interface MicrosoftPlansSectionProps {
   /** Section title, e.g. "PYME" or "EMPRESARIAL" */
   sectionTitle?: string;
+  /** Optional id for the section (e.g. for scroll-to from hero cards) */
+  id?: string;
   plans: MicrosoftPlanItem[];
+  /** Optional CTA shown below the plans grid (e.g. "Cotizar" with icon) */
+  sectionCta?: { label: string; href: string; icon?: React.ReactNode };
   className?: string;
 }
+
+const defaultSectionCta = {
+  label: "Cotizar",
+  href: "/cotizar",
+  icon: <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />,
+};
 
 const defaultApps: MicrosoftPlanApp[] = [
   { name: "Word", icon: "mdi:microsoft-word" },
@@ -42,11 +52,13 @@ const cardClass =
 
 export function MicrosoftPlansSection({
   sectionTitle = "PYME",
+  id,
   plans,
+  sectionCta = defaultSectionCta,
   className = "",
 }: MicrosoftPlansSectionProps) {
   return (
-    <section className={`py-16 sm:py-20 lg:py-24 ${className}`.trim()}>
+    <section id={id} className={`py-16 sm:py-20 lg:py-24 ${className}`.trim()}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {sectionTitle && (
           <h2 className="mb-10 text-center text-2xl font-bold text-foreground sm:text-3xl">
@@ -120,6 +132,19 @@ export function MicrosoftPlansSection({
             </div>
           ))}
         </div>
+        {sectionCta && (
+          <div className="mt-12 flex justify-center">
+            <Button
+              variant="secondary"
+              href={sectionCta.href}
+              icon={sectionCta.icon}
+              iconPosition="left"
+              className="min-w-[12rem] rounded-full px-8 sm:px-10"
+            >
+              {sectionCta.label}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

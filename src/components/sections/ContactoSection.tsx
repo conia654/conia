@@ -30,7 +30,10 @@ export function ContactoSection({
   className = "",
 }: ContactoSectionProps) {
   return (
-    <section className={`relative py-16 sm:py-20 ${className}`.trim()}>
+    <section
+      id="contacto"
+      className={`relative py-16 sm:py-20 ${className}`.trim()}
+    >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-medium text-foreground sm:text-4xl">
           {title}

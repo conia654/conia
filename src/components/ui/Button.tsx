@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { ButtonHTMLAttributes } from "react";
+import { useLenisRef } from "@/components/ui/SmoothScroll";
 
 export type ButtonVariant = "primary" | "secondary";
 
@@ -13,6 +14,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   /** When set, renders as Next.js Link instead of button. */
   href?: string;
+  /** When set with href, on click scrolls to this id if the element exists (smooth), else navigates. */
+  scrollToId?: string;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -47,6 +50,7 @@ function ButtonContent({
   );
 }
 
+
 export function Button({
   variant = "primary",
   icon,
@@ -55,14 +59,32 @@ export function Button({
   className = "",
   disabled,
   href,
+  scrollToId,
   ...props
 }: ButtonProps) {
+  const lenisRef = useLenisRef();
   const styles = variantStyles[variant];
   const classNames = `${base} ${styles} ${className}`.trim();
 
+  const handleScrollToClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!scrollToId) return;
+    const el = document.getElementById(scrollToId);
+    if (!el) return;
+    e.preventDefault();
+    if (lenisRef?.current) {
+      lenisRef.current.scrollTo(el, { duration: 1.2, offset: 0 });
+    } else {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   if (href) {
     return (
-      <Link href={href} className={classNames}>
+      <Link
+        href={href}
+        className={classNames}
+        {...(scrollToId ? { onClick: handleScrollToClick } : {})}
+      >
         <ButtonContent icon={icon} iconPosition={iconPosition}>
           {children}
         </ButtonContent>
