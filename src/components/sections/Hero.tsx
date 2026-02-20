@@ -33,14 +33,14 @@ export function Hero({
   className = "",
 }: HeroProps) {
   const headlineRef = useRef<HTMLDivElement>(null);
-  const chars = title.split("");
+  const words = title.split(/\s+/);
 
   useEffect(() => {
     const el = headlineRef.current;
     if (!el) return;
 
     const innerSpans = el.querySelectorAll<HTMLElement>("[data-char] .char-inner");
-    if (!innerSpans.length) return;
+    if (innerSpans.length === 0) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -83,16 +83,19 @@ export function Hero({
         className="max-w-4xl text-4xl font-medium leading-tight text-foreground sm:text-5xl"
         role="presentation"
       >
-        {chars.map((char, i) => (
-          <span
-            key={i}
-            data-char
-            className="inline-block overflow-hidden align-bottom leading-tight"
-            style={{ verticalAlign: "bottom" }}
-          >
-            <span className="inline-block char-inner">
-              {char === " " ? "\u00A0" : char}
-            </span>
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-block whitespace-nowrap">
+            {wordIndex > 0 && "\u00A0"}
+            {word.split("").map((char, i) => (
+              <span
+                key={i}
+                data-char
+                className="inline-block overflow-hidden align-bottom leading-tight"
+                style={{ verticalAlign: "bottom" }}
+              >
+                <span className="inline-block char-inner">{char}</span>
+              </span>
+            ))}
           </span>
         ))}
       </div>

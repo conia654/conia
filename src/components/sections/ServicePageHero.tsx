@@ -46,7 +46,7 @@ export function ServicePageHero({
       <div className="relative z-10 mx-auto grid max-w-5xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-8">
         {/* Left: title + CTAs */}
         <div className="max-w-xl">
-          <h1 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl lg:text-[2.25rem]">
+          <h1 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl lg:text-[2.25rem] break-keep">
             {title}
           </h1>
           <div className="mt-8 flex flex-wrap items-center gap-4">
