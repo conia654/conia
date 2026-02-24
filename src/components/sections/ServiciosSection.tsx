@@ -1,13 +1,9 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export interface ServicioItem {
   title: string;
@@ -86,54 +82,14 @@ export function ServiciosSection({
   services = defaultServices,
   className = "",
 }: ServiciosSectionProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const cards = section.querySelectorAll<HTMLElement>(
-      "[data-servicios-card]",
-    );
-    if (!cards.length) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 65%",
-        once: true,
-        toggleActions: "play none none none",
-      },
-    });
-
-    tl.fromTo(
-      cards,
-      { y: 48, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.15,
-      },
-    );
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => {
-        if (t.trigger === section) t.kill();
-      });
-    };
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       className={`relative pt-0 sm:pt-0 pb-16 sm:pb-24 ${className}`.trim()}
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
           {services.map((item) => (
-            <div key={item.title} data-servicios-card>
+            <div key={item.title}>
               <ServiceCard item={item} />
             </div>
           ))}
