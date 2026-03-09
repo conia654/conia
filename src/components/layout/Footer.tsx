@@ -18,7 +18,7 @@ export interface FooterProps {
 }
 
 const defaultAddressLines = [
-  "Montes Urales 455 piso 1,",
+  "Montes Urales #455 piso 1,",
   "Lomas de Chapultepec,",
   "Ciudad de México",
 ];
