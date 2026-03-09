@@ -22,7 +22,7 @@ export function ServiceConfigureCta({
   subtitle = defaultSubtitle,
   description = defaultDescription,
   ctaLabel = "Cotizar",
-  ctaHref = "/cotizar",
+  ctaHref = "https://wa.me/525545686108",
   className = "",
 }: ServiceConfigureCtaProps) {
   return (

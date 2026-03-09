@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/Button";
 
@@ -29,6 +30,60 @@ export function ContactoSection({
   instagramUrl = defaultInstagramUrl,
   className = "",
 }: ContactoSectionProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formMessage, setFormMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormMessage("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      nombre: String(formData.get("nombre") || "").trim(),
+      apellido: String(formData.get("apellido") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      telefono: String(formData.get("telefono") || "").trim(),
+    };
+
+    if (!payload.nombre || !payload.apellido || !payload.email) {
+      setFormMessage(
+        "Por favor completa nombre, apellido y correo electrónico.",
+      );
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "No se pudo enviar el formulario.");
+      }
+
+      setFormMessage("Mensaje enviado correctamente.");
+      form.reset();
+    } catch (error) {
+      setFormMessage(
+        error instanceof Error
+          ? error.message
+          : "Hubo un error al enviar el formulario.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section
       id="contacto"
@@ -50,6 +105,7 @@ export function ContactoSection({
               </span>
               <span>{phone}</span>
             </a>
+
             <a
               href={`mailto:${email}`}
               className={`flex items-center gap-1 ${linkTextClass}`}
@@ -59,6 +115,7 @@ export function ContactoSection({
               </span>
               <span>{email}</span>
             </a>
+
             <div className="flex items-center gap-3 pt-1">
               <a
                 href={facebookUrl}
@@ -69,6 +126,7 @@ export function ContactoSection({
               >
                 <Icon icon="ri:facebook-fill" width={22} height={22} />
               </a>
+
               <a
                 href={instagramUrl}
                 target="_blank"
@@ -82,10 +140,7 @@ export function ContactoSection({
           </div>
 
           <div className="rounded-2xl border border-outline/30 bg-white p-8 shadow-sm">
-            <form
-              className="flex flex-col gap-4"
-              onSubmit={(e) => e.preventDefault()}
-            >
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <input
                   type="text"
@@ -93,6 +148,7 @@ export function ContactoSection({
                   placeholder="Nombre"
                   className={inputBase}
                   aria-label="Nombre"
+                  required
                 />
                 <input
                   type="text"
@@ -100,15 +156,19 @@ export function ContactoSection({
                   placeholder="Apellido"
                   className={inputBase}
                   aria-label="Apellido"
+                  required
                 />
               </div>
+
               <input
                 type="email"
                 name="email"
                 placeholder="Correo electrónico"
                 className={inputBase}
                 aria-label="Correo electrónico"
+                required
               />
+
               <input
                 type="tel"
                 name="telefono"
@@ -116,15 +176,21 @@ export function ContactoSection({
                 className={inputBase}
                 aria-label="Teléfono"
               />
+
               <div className="mt-2">
                 <Button
                   type="submit"
                   variant="primary"
                   className="rounded-full shadow-sm"
+                  disabled={isSubmitting}
                 >
-                  Enviar
+                  {isSubmitting ? "Enviando..." : "Enviar"}
                 </Button>
               </div>
+
+              {formMessage && (
+                <p className="text-sm text-foreground/80">{formMessage}</p>
+              )}
             </form>
           </div>
         </div>

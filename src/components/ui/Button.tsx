@@ -79,10 +79,12 @@ export function Button({
   };
 
   if (href) {
+    const isExternal = href.startsWith("http");
     return (
       <Link
         href={href}
         className={classNames}
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         {...(scrollToId ? { onClick: handleScrollToClick } : {})}
       >
         <ButtonContent icon={icon} iconPosition={iconPosition}>

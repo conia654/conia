@@ -19,7 +19,7 @@ const pymePlans: MicrosoftPlanItem[] = [
   {
     title: "Microsoft 365 Empresa Básico",
     tagline: "Aplicaciones web y móviles ligeras para impulsar tu negocio.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     featuresHeading: "Información destacada del plan:",
     features: [
@@ -34,7 +34,7 @@ const pymePlans: MicrosoftPlanItem[] = [
     title: "Microsoft 365 Empresa Estándar",
     tagline:
       "Aplicaciones de escritorio y servicios en la nube para equipos que necesitan más.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     featuresHeading: "Todo lo que incluye la versión Empresa Básico, y además:",
     features: [
@@ -48,7 +48,7 @@ const pymePlans: MicrosoftPlanItem[] = [
     title: "Microsoft 365 Empresa Premium",
     tagline:
       "La solución más completa con seguridad avanzada y gestión de dispositivos.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     featuresHeading:
       "Todo lo que incluye la versión Empresa Estándar, y además:",
@@ -66,7 +66,7 @@ const enterprisePlans: MicrosoftPlanItem[] = [
     title: "Microsoft 365 E3",
     tagline:
       "Potentes aplicaciones de productividad con capacidades mejoradas de seguridad y cumplimiento.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     featuresHeading: "Información destacada del plan:",
     features: [
@@ -86,7 +86,7 @@ const enterprisePlans: MicrosoftPlanItem[] = [
     title: "Microsoft 365 E5",
     tagline:
       "Las mejores aplicaciones de productividad con tecnología de IA de su clase, con funciones avanzadas de seguridad, cumplimiento, análisis y preparación para la IA.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     featuresHeading: "Todo lo que tiene Microsoft 365 E3, más:",
     features: [
@@ -105,7 +105,7 @@ const enterprisePlans: MicrosoftPlanItem[] = [
     title: "Microsoft 365 F3",
     tagline:
       "Experiencias conectadas diseñadas específicamente, automatización de flujos de trabajo y seguridad mejorada para los trabajadores de primera línea.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     featuresHeading: "Información destacada del plan:",
     features: [
@@ -141,7 +141,7 @@ export default function MicrosoftSolutionsPartnerPage() {
         primaryCta={{ label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" }}
         secondaryCta={{
           label: "Cotizar",
-          href: "/cotizar",
+          href: "https://wa.me/525545686108",
           icon: (
             <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />
           ),

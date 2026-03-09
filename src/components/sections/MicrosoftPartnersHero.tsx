@@ -35,7 +35,7 @@ const defaultTitle = (
 const defaultPrimaryCta = { label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" };
 const defaultSecondaryCta = {
   label: "Cotizar",
-  href: "/cotizar",
+  href: "https://wa.me/525545686108",
   icon: <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />,
 };
 const defaultCalloutText = "¡Facturamos todos los servicios!";

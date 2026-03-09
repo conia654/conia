@@ -27,7 +27,7 @@ const printerCards = [
     impressions: "1,000 impresiones",
     description:
       "Ofrece tamaño compacto, buena velocidad y uso sencillo para impulsar la productividad en oficina. Su diseño eficiente permite imprimir, copiar, escanear y faxear con gran rendimiento en cualquier entorno de trabajo.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     specs: [
       <span key="spec-1-1">
@@ -55,7 +55,7 @@ const printerCards = [
     impressions: "3,500 impresiones",
     description:
       "Ofrece un desempeño superior y un diseño seguro que impulsa la productividad de cualquier oficina. Con alta velocidad de impresión, gran capacidad de tóner y funciones avanzadas, es una solución robusta para volúmenes de trabajo exigentes.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     specs: [
       <span key="spec-2-1">
@@ -83,7 +83,7 @@ const printerCards = [
     impressions: "1,500 b/n y 2,000 color",
     description:
       "Multifuncional a color diseñada para ofrecer velocidad, versatilidad y calidad de impresión superior. Ideal para oficinas que necesitan documentos profesionales en color sin sacrificar eficiencia, seguridad ni rendimiento.",
-    ctaHref: "/cotizar",
+    ctaHref: "https://wa.me/525545686108",
     ctaLabel: "Cotizar",
     badge: (
       <div className="absolute -right-4 top-4 z-10 flex flex-col items-center gap-1.5 rounded-md bg-primary p-2 text-md font-semibold text-white shadow-sm ring-1 ring-outline/20">
@@ -129,7 +129,7 @@ export default function RentaImpresorasPage() {
         primaryCta={{ label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" }}
         secondaryCta={{
           label: "Cotizar",
-          href: "/cotizar",
+          href: "https://wa.me/525545686108",
           icon: (
             <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />
           ),

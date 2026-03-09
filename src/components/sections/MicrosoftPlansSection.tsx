@@ -33,7 +33,7 @@ export interface MicrosoftPlansSectionProps {
 
 const defaultSectionCta = {
   label: "Cotizar",
-  href: "/cotizar",
+  href: "https://wa.me/525545686108",
   icon: <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />,
 };
 
@@ -77,7 +77,7 @@ export function MicrosoftPlansSection({
               <div className="mt-4 flex justify-center px-6">
                 <Button
                   variant="secondary"
-                  href={plan.ctaHref ?? "/cotizar"}
+                  href={plan.ctaHref ?? "https://wa.me/525545686108"}
                   className="rounded-full w-full"
                 >
                   {plan.ctaLabel ?? "Cotizar"}
