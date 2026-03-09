@@ -32,11 +32,15 @@ export function ContactoSection({
 }: ContactoSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formMessage, setFormMessage] = useState("");
+  const [formStatus, setFormStatus] = useState<"success" | "error" | null>(
+    null,
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormMessage("");
+    setFormStatus(null);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -52,6 +56,7 @@ export function ContactoSection({
       setFormMessage(
         "Por favor completa nombre, apellido y correo electrónico.",
       );
+      setFormStatus("error");
       setIsSubmitting(false);
       return;
     }
@@ -72,13 +77,18 @@ export function ContactoSection({
       }
 
       setFormMessage("Mensaje enviado correctamente.");
+      setFormStatus("success");
       form.reset();
     } catch (error) {
-      setFormMessage(
-        error instanceof Error
-          ? error.message
-          : "Hubo un error al enviar el formulario.",
-      );
+      const rawMessage =
+        error instanceof Error ? error.message : "Error al enviar el formulario.";
+      const friendlyMessage =
+        process.env.NODE_ENV !== "production"
+          ? rawMessage
+          : "Hubo un error al enviar el formulario. Inténtalo de nuevo más tarde.";
+
+      setFormMessage(friendlyMessage);
+      setFormStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -188,8 +198,33 @@ export function ContactoSection({
                 </Button>
               </div>
 
-              {formMessage && (
-                <p className="text-sm text-foreground/80">{formMessage}</p>
+              {formMessage && formStatus && (
+                <div
+                  className={`mt-2 flex items-start gap-2 rounded-lg border px-3 py-2 text-sm ${
+                    formStatus === "success"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                      : "border-red-200 bg-red-50 text-red-800"
+                  }`}
+                  role={formStatus === "error" ? "alert" : "status"}
+                >
+                  <span className="mt-0.5">
+                    <Icon
+                      icon={
+                        formStatus === "success"
+                          ? "mdi:check-circle"
+                          : "mdi:alert-circle"
+                      }
+                      width={18}
+                      height={18}
+                      className={
+                        formStatus === "success"
+                          ? "text-emerald-500"
+                          : "text-red-500"
+                      }
+                    />
+                  </span>
+                  <span>{formMessage}</span>
+                </div>
               )}
             </form>
           </div>

@@ -11,6 +11,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Conia",
   description: "Built with Next.js, Tailwind and GSAP",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
