@@ -70,7 +70,7 @@ export function PrinterRentalCards({
                 <div className="mt-4 w-full">
                   <Button
                     variant="secondary"
-                    href={card.ctaHref ?? "https://wa.me/525545686108"}
+                    href={card.ctaHref ?? "https://wa.me/525545686105"}
                     className="w-full"
                   >
                     {card.ctaLabel ?? "Cotizar"}

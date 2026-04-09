@@ -24,10 +24,14 @@ export interface ServicePageHeroProps {
   className?: string;
 }
 
-const defaultPrimaryCta = { label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" };
+const defaultPrimaryCta = {
+  label: "Contáctanos",
+  href: "/#contacto",
+  scrollToId: "contacto",
+};
 const defaultSecondaryCta = {
   label: "Cotizar",
-  href: "https://wa.me/525545686108",
+  href: "https://wa.me/525545686105",
   icon: <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />,
 };
 
@@ -50,7 +54,11 @@ export function ServicePageHero({
             {title}
           </h1>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={primaryCta.href} scrollToId={primaryCta.scrollToId}>
+            <Button
+              variant="primary"
+              href={primaryCta.href}
+              scrollToId={primaryCta.scrollToId}
+            >
               {primaryCta.label}
             </Button>
             <Button

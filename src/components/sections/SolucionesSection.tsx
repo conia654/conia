@@ -56,7 +56,7 @@ export function SolucionesSection({
   title = "Soluciones MSP",
   subtitle = "Soporte especializado incluido",
   intro = defaultIntro,
-  ctaHref = "https://wa.me/525545686108",
+  ctaHref = "https://wa.me/525545686105",
   ctaLabel = "Cotizar",
   items = defaultItems,
   className = "",

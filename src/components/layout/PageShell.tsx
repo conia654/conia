@@ -33,7 +33,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
 
         {/* Floating WhatsApp button */}
         <a
-          href="https://wa.me/525545686108"
+          href="https://wa.me/525545686105"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chatear por WhatsApp"

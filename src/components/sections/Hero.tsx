@@ -24,10 +24,14 @@ const defaultTitle =
 
 export function Hero({
   title = defaultTitle,
-  primaryCta = { label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" },
+  primaryCta = {
+    label: "Contáctanos",
+    href: "/#contacto",
+    scrollToId: "contacto",
+  },
   secondaryCta = {
     label: "Cotizar",
-    href: "https://wa.me/525545686108",
+    href: "https://wa.me/525545686105",
     icon: <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />,
   },
   className = "",
@@ -39,7 +43,9 @@ export function Hero({
     const el = headlineRef.current;
     if (!el) return;
 
-    const innerSpans = el.querySelectorAll<HTMLElement>("[data-char] .char-inner");
+    const innerSpans = el.querySelectorAll<HTMLElement>(
+      "[data-char] .char-inner",
+    );
     if (innerSpans.length === 0) return;
 
     const tl = gsap.timeline({
@@ -60,7 +66,7 @@ export function Hero({
         duration: 0.5,
         ease: "power2.out",
         stagger: { each: 0.025 },
-      }
+      },
     );
 
     return () => {
@@ -100,7 +106,11 @@ export function Hero({
         ))}
       </div>
       <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <Button variant="primary" href={primaryCta.href} scrollToId={primaryCta.scrollToId}>
+        <Button
+          variant="primary"
+          href={primaryCta.href}
+          scrollToId={primaryCta.scrollToId}
+        >
           {primaryCta.label}
         </Button>
         <Button

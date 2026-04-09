@@ -32,10 +32,14 @@ const defaultTitle = (
     Partners <span className="text-primary">oficiales</span> de Microsoft
   </>
 );
-const defaultPrimaryCta = { label: "Contáctanos", href: "/#contacto", scrollToId: "contacto" };
+const defaultPrimaryCta = {
+  label: "Contáctanos",
+  href: "/#contacto",
+  scrollToId: "contacto",
+};
 const defaultSecondaryCta = {
   label: "Cotizar",
-  href: "https://wa.me/525545686108",
+  href: "https://wa.me/525545686105",
   icon: <Icon icon="fluent:cursor-click-24-filled" width={24} height={24} />,
 };
 const defaultCalloutText = "¡Facturamos todos los servicios!";
@@ -89,7 +93,11 @@ export function MicrosoftPartnersHero({
             />
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={primaryCta.href} scrollToId={primaryCta.scrollToId}>
+            <Button
+              variant="primary"
+              href={primaryCta.href}
+              scrollToId={primaryCta.scrollToId}
+            >
               {primaryCta.label}
             </Button>
             <Button
