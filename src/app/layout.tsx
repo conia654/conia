@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { GoogleTag } from "@/components/analytics/GoogleTag";
 import { PageShell } from "@/components/layout";
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <PageShell>{children}</PageShell>
       </body>
+      <GoogleTag />
     </html>
   );
 }

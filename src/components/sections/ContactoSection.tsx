@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/Button";
+import { trackAdsConversion } from "@/lib/gtag";
 
 export interface ContactoSectionProps {
   title?: string;
@@ -79,6 +80,7 @@ export function ContactoSection({
       setFormMessage("Mensaje enviado correctamente.");
       setFormStatus("success");
       form.reset();
+      trackAdsConversion();
     } catch (error) {
       const rawMessage =
         error instanceof Error ? error.message : "Error al enviar el formulario.";
