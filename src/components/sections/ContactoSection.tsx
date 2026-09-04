@@ -14,7 +14,7 @@ export interface ContactoSectionProps {
   className?: string;
 }
 
-const defaultPhone = "55 5291 8048";
+const defaultPhone = "5554016081";
 const defaultEmail = "ventas@conia.com.mx";
 const linkTextClass = "link-text";
 const defaultFacebookUrl = "https://facebook.com";
